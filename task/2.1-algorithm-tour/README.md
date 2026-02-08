@@ -88,6 +88,5 @@ For each language, include:
 - **Code quality (20%)** — concise, readable, idiomatic implementations
 - **Extras (10%)** — simple tests, small harnesses, or insightful reflections
 
-
 ## Final notes
 Implementations must be your own work. If you want feedback on a draft, add your files under `task/<your-github-username>/2.1-algorithm-tour/` and open a PR; reviewers will focus on correctness, clarity, and reproducibility.

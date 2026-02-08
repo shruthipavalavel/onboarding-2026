@@ -11,7 +11,7 @@ This document provides the acceptance criteria. It intentionally does not includ
 Take a small service (for example, a tiny web app) and produce the minimal artifacts needed to run it in a containerized environment along with one auxiliary service (for example: a key-value store or a small database). Demonstrate how the services are built, started, and verified locally.
 
 
-## Deliverables (conceptual)
+## Deliverables
 
 Place the required artifacts in `task/<your-github-username>/2.1-containerization/`:
 
@@ -41,7 +41,7 @@ Do not include compiled images, large binaries, or pre-downloaded artifacts in t
 - **Persistence**: if state is required, use a volume and document its role in verification.
 
 
-## How to approach the task (conceptual steps)
+## How to approach the task
 
 1. Choose a tiny app you can implement and verify locally.
 2. Create a minimal `Dockerfile` to build the app image.
@@ -54,7 +54,7 @@ Do not include compiled images, large binaries, or pre-downloaded artifacts in t
 6. Add a concise `README.md` in your submission folder that explains how a reviewer can build, run, and verify the stack.
 
 
-## What to include in your submission directory (recommended layout)
+## What to include in your submission directory
 
 - `task/<your-github-username>/2.1-containerization/`
   - `README.md` — brief build/run/verify instructions and notes.
@@ -65,7 +65,7 @@ Do not include compiled images, large binaries, or pre-downloaded artifacts in t
   - `usage.txt` — short conceptual verification checklist (not a long tutorial).
 
 
-## Acceptance criteria (for reviewers)
+## Acceptance criteria
 
 A submission should satisfy the following:
 
@@ -76,7 +76,7 @@ A submission should satisfy the following:
 - The submission `README.md` contains concise verification steps and any environment-specific notes.
 
 
-## Best practices (recommendations)
+## Best practices
 
 - Use a `.dockerignore` to keep build contexts small.
 - Pin auxiliary service image versions to avoid surprises.
@@ -104,9 +104,3 @@ A submission should satisfy the following:
 - Provide a dev variant (compose override) that mounts local source for fast iteration.
 - Add a tiny Makefile with minimal shorthand targets (`make build`, `make up`, `make down`) — keep it documented and optional.
 - Include a short note about how the setup could be adapted for CI (conceptual only).
-
-
-## Review & help
-
-- If you want a checklist-style `README.md` template (no commands) I can provide one to copy into your submission folder.
-- If you want a review of a draft, open a PR or paste the file contents and I will provide feedback on structure and clarity (I will not provide finished solution code).

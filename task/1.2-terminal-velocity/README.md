@@ -10,7 +10,7 @@
 - **Terminal fluency:** Confidently use shell navigation and compose small, focused pipelines to solve everyday tasks without relying on graphical tools.
 
 
-## What to do (high level)
+## What to do
 
 ### 1) Touch-typing practice
 - Pick a reputable typing course and complete a baseline test.
@@ -24,7 +24,7 @@
   - Composing commands using pipes and redirection.
 - Solve small, concrete problems at the shell and **choose three representative one-liners** or short pipelines you rely on; explain each briefly.
 
-### 3) Short exercises (practice & evidence)
+### 3) Short exercises
 For each exercise include:
 - A one-line description of the problem.
 - A short explanation of the approach (which utilities you combined and why).
@@ -36,7 +36,7 @@ Suggested exercise types (describe what to do, not how):
 - Preview the most recently modified file in a directory and inspect its top lines.
 
 
-## Deliverables (what to include in your submission)
+## Deliverables
 Create `task/<your-github-username>/2-terminal-velocity/` and include:
 
 - `README.md` — a short reflection (1–2 paragraphs) describing:
@@ -71,10 +71,9 @@ In your PR description include a short verification checklist for reviewers (wha
 - Sanitize all public outputs and screenshots; never commit secrets or personal data.
 
 
-## Privacy & safety (important)
+## Privacy & safety
 - Do **not** commit screenshots or outputs that contain passwords, API keys, private IPs, or other sensitive data.
 - If outputs include personal data, redact or sanitize them before committing.
-
 
 ## Need help?
 If you want tailored guidance, tell us:
