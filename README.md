@@ -1,86 +1,166 @@
-# Task — The Broken Web App
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/init-club/.github/main/assets/logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/init-club/.github/main/assets/logo-light.svg">
+    <img alt="Init Club Logo"
+         src="https://raw.githubusercontent.com/init-club/.github/main/assets/logo-light.svg"
+         width="300">
+  </picture>
+    <h1>Onboarding Tasks for Init Club Members - 2026</h1>
+</div>
 
-## Purpose
-**Goal:** Learn practical debugging by diagnosing and fixing a broken interaction between a frontend and a backend service. This task builds confidence in tracing issues across the client–server boundary.
+## Welcome
 
+This repository contains documentation-first onboarding tasks for new contributors. Each task folder's README describes the objective, acceptance criteria, helpful references, and submission instructions.
 
-## Description of the Challenge
-You are given a small web app where the frontend and backend are not communicating correctly. Your job is to investigate, identify the fault, and fix it so data flows as expected.
+## How this repo is organized
 
+Top-level layout
 
-## Sub-problems
-- Inspecting network requests  
-- Fixing incorrect API communication  
+- `LICENSE` — repository license.
+- `README.md` — this top-level introduction.
+- `task/` — directory containing individual task folders (each with a `README.md` describing the task and submission requirements).
 
+Each task folder contains:
 
-## Easy Level
-- Identify why the submit button fails  
-- Fix the communication issue so requests succeed  
+- `README.md` — detailed task instructions, acceptance criteria, examples, and helpful resources.
+- Optional starter files (scripts, sample code, Dockerfile, etc.) where applicable.
+- When you submit: your work should be placed under `task/<your-github-username>/<task-folder>/`.
 
+## How to submit a task
 
-## Advanced Level
-- Use Browser DevTools (Network, Console, Application tabs) to debug  
-- Ensure data is correctly sent, received, and stored  
+Follow these steps so reviewers can run and verify your work quickly:
 
+1. Fork the repository to your GitHub account.
+2. Create a directory for your work:
+   - `task/<your-github-username>/<task-id-or-name>/`
+3. Add your deliverables. Typical required files:
+   - `README.md` (short personal writeup describing choices and verification steps).
+   - Any screenshots, GIFs, or example output (e.g., `neofetch-screenshot.png`, `docker-ps-screenshot.png`).
+   - Source files or scripts (`check_resources.sh`, `todo.py`, `sentiment.py`, etc.).
+   - `usage.txt` or `examples.txt` describing the exact commands you ran.
+4. Commit small, focused changes with descriptive messages.
+5. Push to a feature branch, then open a PR against `init-club/onboarding-2026` naming your PR clearly (see section below).
+6. In the PR description include:
+   - Short summary and which task you're submitting.
+   - Clear verification steps for reviewers (commands + expected output).
+   - Links to any external PRs (Task 2.2 / Task 4.2).
+   - Screenshots and artifacts as attachments or files in your submission directory.
 
-## Pre-requisites
-- Basic HTML knowledge  
-- Basic JavaScript knowledge  
-- Familiarity with how web requests work (high-level)  
+## Quickstart
 
+1. Fork this repository on GitHub.
+2. Create your submission folder: `task/<your-github-username>/<task-id>/`.
+3. Add a short `README.md` describing your approach and the artifacts requested by the task.
+4. Include only the files the task asks for (screenshots, short source files, diffs, or configs).
+5. Open a Pull Request with verification steps and any external links the task requires.
 
-## Learning Outcomes
-- Stronger debugging skills  
-- Understanding client–server interaction  
-- Confidence using browser developer tools  
+## Notes
 
+- Implement and test solutions locally in your environment, then include the requested deliverables when submitting.
+- Avoid committing large binaries, models, or secrets. If in doubt, ask via an Issue.
 
-## What to Do
-1. Reproduce the bug consistently.  
-2. Open DevTools and inspect Console and Network activity.  
-3. Check request URLs, methods, headers, and payloads.  
-4. Verify backend responses and error messages.  
-5. Apply a fix and retest until the flow works reliably.  
+Example PR title: `feat(tasks): add linux-migration submission by alice`
 
+## Standards & acceptance criteria
 
-## Expected Submission
-- A Pull Request that fixes the issue  
-- Short notes in the PR description explaining:
-  - What was wrong  
-  - How you found it   
-  - What you changed   
+Each task README enumerates the deliverables and what constitutes an acceptable submission. Reviewers will check:
 
-## How to run this locally
+- Deliverables are present and runnable.
+- README provides clear setup and verification steps.
+- Screenshots / evidence are legible and show the relevant info (e.g., `neofetch` output).
+- For fixes (e.g., the broken web app), the PR both fixes the root cause and includes explanation + tests where applicable.
+- Code style: readable, documented, and minimal. Avoid secrets and large binaries in PRs.
 
-Prerequisites: Node.js v14+ installed.
+If a task has Gold/Silver tiers (e.g., dual-boot vs WSL2), clearly state which tier you expect to be evaluated against.
 
-1. Install dependencies and start the server:
+## Review process & rubric
 
-```bash
-cd task/4-broken-webapp
-npm install
-npm start
-```
+Reviews are performed by maintainers and/or volunteers. Expect feedback to be constructive and focused on reproducibility.
 
-2. Open the app in your browser:
+### Typical rubric (per task):
 
-- Main Page: http://localhost:3000
+- Completeness (40%): All required files and evidence are present.
+- Correctness (30%): The solution works as claimed; for bug fixes, the root cause is addressed.
+- Documentation (20%): README + usage instructions are clear and sufficient to reproduce results.
+- Style & safety (10%): Clean code and no unsafe shortcuts (e.g., committing secrets).
+
+### Review outcomes:
+
+- Approved: Merge or close with merge instructions.
+- Request changes: Ask for clarifications, missing artifacts, or small fixes.
+- Discussion: If scope or expectations are unclear, reviewers will ask clarifying questions.
+
+## Branching, commits, and PR style guide
+
+- Create a fresh branch off `main` for each submission:
+  - `git checkout -b feat/tasks/<task>-<username>`
+- Commit message guidelines:
+  - Use concise, descriptive messages. Examples:
+    - `feat(tasks): add linux-migration submission by <username>`
+    - `fix(frontend): bind rsvp form submit handler`
+    - `chore(ci): add simple test for rsvp endpoint`
+- Keep commits small and atomic where possible. Squash or clean history if requested.
+- Fill the PR description with:
+  - What you did and why.
+  - How to run and verify (copy-pasteable commands).
+  - Any known limitations or additional notes.
+
+Example PR description template:
+
+```markdown
+Title: feat(tasks): add terminal-velocity by <username>
+
+Summary:
+
+- Completed Task 1.2 (Terminal Velocity).
+- Included typing screenshot and `commands.md`.
+
+How to verify:
+
+1. Open task/<username>/2-terminal-velocity/commands.md
+2. Verify the three commands and outputs.
+3. Confirm screenshot.png shows WPM and accuracy.
 
 Notes:
-- The backend is implemented in `server.js` and stores submissions in memory.
-- The `easy.html` and `advanced.html` pages intentionally include client-side bugs for the debugging; use DevTools (F12) → Network/Console to inspect requests.
 
-`   
+- No external dependencies.
+```
 
+## Templates and starter files
 
-## Evaluation Criteria
-- Correctness of the fix  
-- Clear debugging approach  
-- Evidence of using DevTools effectively  
+Many tasks include starter templates and example files inside their task folders. If you want a boilerplate for a task, look for files named:
 
+- `template-*.sh`, `todo.py` (starter), `sentiment.py` (starter), `Dockerfile`, `docker-compose.yml`, or example code under the relevant task folder.
 
-## Good Practices
-- Change one thing at a time and retest  
-- Read error messages carefully  
-- Avoid “random fixes” without understanding the cause  
-- Keep your explanation simple and reproducible
+If you prefer, maintainers can generate a minimal skeleton for you in a branch — open an issue requesting it.
+
+## Getting help and community expectations
+
+- Before opening an Issue, search this repo for existing guidance.
+- If you need help with a task (e.g., debugging an installer or tests), open an Issue with:
+  - The task folder and your branch name.
+  - Clear steps to reproduce the problem and any logs or screenshots.
+- Be respectful, concise, and patient — maintainers are volunteers.
+- Code of Conduct: follow the Init Club code of conduct (link in the organization profile).
+
+## Security, privacy, and licensing
+
+- Do NOT commit secrets, API keys, private keys, or large binary models to this repository.
+- Use `.gitignore` to avoid committing OS-specific files or local artifacts.
+- For tasks requiring models (e.g., transformers), list dependencies in `requirements.txt` and document that models will be downloaded on first run.
+- Repository license: check the `LICENSE` file at the repo root. Respect the license when reusing code or examples.
+
+## Maintainers & contacts
+
+- Primary maintainers and reviewers are listed in the organization’s team page. If you need to request a reviewer, mention `@init-club/maintainers` in the Issue or PR body.
+- If you want an interactive review session or mentorship, open an Issue titled `Request: reviewer/mentorship — <task> by <username>` and include preferred times.
+
+## Final notes & best practices
+
+- Keep your submission reproducible: include exact commands and expected outputs.
+- Provide friendly README summaries that make it easy for reviewers to reproduce and grade your work.
+- Prefer small, well-documented PRs over monolithic submissions.
+- Ask for help early — debugging/install questions are common and the community can guide you.
+
+Happy hacking — we look forward to your contributions!
