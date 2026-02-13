@@ -3,98 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Task - 4 - Broken Web App</title>
+  <title>Task 4 - The Broken Web App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <div class="container">
-    <a href="index.html" class="back-link">← Back to Main Page</a>
-    <center><h1>Contact Form</h1></center>
+    <center><h1>Task 4 - The Broken Web App</h1> </center>
 
-    <form id="contactForm">
-      <div>
-        <label for="name">Name</label>
-        <input 
-          type="text" 
-          id="name" 
-          name="name"
-          placeholder="Init Club" 
-          required 
-        />
-      </div>
+    <p>
+      This web app has a form that sends data to a backend server — but
+      <strong>something is broken</strong>. The submit button doesn't work as
+      expected and data never reaches the server.
+    </p>
+      <h3> Hints: </h3>
+    <p>
+      1) Make use of Browser Dev tools to inspect what's going wrong <br>
+    </p>
 
-      <div>
-        <label for="email">Email</label>
-        <input 
-          type="email" 
-          id="email" 
-          name="email"
-          placeholder="temp@gmail.com" 
-          required 
-        />
-      </div>
+    <hr style="border-color: black; margin:1.5rem 0" />
 
-      <div>
-        <label for="message">Message (optional)</label>
-        <textarea 
-          id="message" 
-          name="message"
-          placeholder="Welcome to Init Club">
-        </textarea>
-      </div>
+    <h3>Choose Your Difficulty</h3>
+    <p style="font-size:0.9rem;">
+      1) Both levels use the same backend. <br>
+      2) Easy level has 2 bugs to fix. <br>
+      3) Advanced level has 4 bugs to fix.
+    </p>
 
-      <button type="submit" class="primary">Submit</button>
-    </form>
+    <div class="card-grid">
+      <a href="easy.html" class="card">
+        <center><h1 style="color: green"> Easy </h1></center>
+        <p>Identify why the submit button fails and fix.</p>
+        <h3> Bugs to fix: 2 </h3>
+      </a>
 
-    <div id="status"></div>
-
-    <div class="hint">
-      <details>
-        <summary>Hints</summary>
-        <ol style="margin-top:0.5rem; padding-left:1.2rem; line-height:1.8">
-          <li>Open DevTools (F12) → <strong>Console</strong> tab. Any errors?</li>
-          <li>Open DevTools (F12) → <strong>Network</strong> tab, then click Submit. Observe the URL being invoked</li>
-          <li>Is the HTTP method correct for sending data?</li>
-        </ol>
-      </details>
+      <a href="advanced.html" class="card">
+        <center><h1 style="color: red"> Advanced </h1></center>
+        <p>Identify why the submit button fails and fix.</p>
+        <h3> Bugs to fix: 4 </h3>
+      </a>
     </div>
   </div>
-
-  <script>
-    const form = document.getElementById("contactForm");
-    const statusBox = document.getElementById("status");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const name    = document.getElementById("name").value;
-      const email   = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
-
-      try {
-        const response = await fetch("/api/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, message }),
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          statusBox.className = "success";
-          statusBox.textContent = "Submitted successfully!";
-          form.reset();
-        } else {
-          statusBox.className = "error";
-          statusBox.textContent = `Server error: ${result.error}`;
-        }
-      } catch (err) {
-        statusBox.className = "error";
-        statusBox.textContent = `Request failed: ${err.message}`;
-      }
-    });
-  </script>
 
 </body>
 </html>

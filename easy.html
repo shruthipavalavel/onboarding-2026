@@ -34,43 +34,48 @@
       <details>
         <summary>Hints</summary>
         <ol style="margin-top:0.5rem; padding-left:1.2rem; line-height:1.8">
-          <li>Open DevTools (F12) → <strong>Console</strong> tab. Any errors?</li>
-          <li>Open DevTools (F12) → <strong>Network</strong> tab, then click Submit. Observe the URL being invoked </li>
-          <li>Is the HTTP method correct for sending data?</li>
+          <li>Open DevTools → Console tab. Any errors?</li>
+          <li>Check Network tab and verify request URL</li>
+          <li>Ensure correct HTTP method is used</li>
         </ol>
       </details>
     </div>
   </div>
 
   <script>
-    // in this easy level 2 bugs they are : 
     const form = document.getElementById("contactForm");
     const statusBox = document.getElementById("status");
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const name    = document.getElementById("name").value;
-      const email   = document.getElementById("email").value;
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
       const message = document.getElementById("message").value;
 
       try {
-        const response = await fetch("/api/submt", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, message }),   
+        const response = await fetch("/api/submit", {
+          method: "POST", // ✅ fixed
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ name, email, message }),
         });
 
-        const result = await response.json();   
+        const result = await response.json();
 
         if (result.success) {
           statusBox.className = "success";
-          statusBox.textContent = "Submitted successfully!"; 
+          statusBox.style.display = "block";
+          statusBox.textContent = "Submitted successfully!";
         } else {
           statusBox.className = "error";
+          statusBox.style.display = "block";
           statusBox.textContent = `Server error: ${result.error}`;
         }
       } catch (err) {
         statusBox.className = "error";
+        statusBox.style.display = "block";
         statusBox.textContent = `Request failed: ${err.message}`;
       }
     });

@@ -10,7 +10,7 @@
 
   <div class="container">
     <a href="index.html" class="back-link">← Back to Main Page</a>
-    <center><h1> Contact Form</h1></center>
+    <center><h1>Contact Form</h1></center>
 
     <form id="contactForm">
       <div>
@@ -32,9 +32,6 @@
 
     <div id="submissions">
       <h3>Stored Submissions</h3>
-      <p style="font-size:0.85rem; color:#888;">
-        Click the button below to fetch all stored entries from the server.
-      </p>
       <button class="primary" onclick="loadSubmissions()" style="margin-bottom:1rem;">
         Load Submissions
       </button>
@@ -45,63 +42,71 @@
       <details>
         <summary>Hints</summary>
         <ol style="margin-top:0.5rem; padding-left:1.2rem; line-height:1.8">
-          <li>Open DevTools → <strong>Network</strong> tab. observe the status code that POST method return.</li>
-          <li>Check the <strong>Request Headers</strong> </li>
-          <li>Compare the JSON format </li>
-          <li>After fixing submit, load submissions and observe the displayed output</li>
+          <li>Check Network tab for request headers</li>
+          <li>Compare JSON payload with backend</li>
+          <li>Verify response parsing</li>
+          <li>Check field names while rendering</li>
         </ol>
       </details>
     </div>
   </div>
 
   <script>
-    const form      = document.getElementById("contactForm");
+    const form = document.getElementById("contactForm");
     const statusBox = document.getElementById("status");
-    const entries   = document.getElementById("entries");
+    const entries = document.getElementById("entries");
 
+    // ✅ FIXED SUBMIT HANDLER
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const name    = document.getElementById("name").value;
-      const email   = document.getElementById("email").value;
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
       const message = document.getElementById("message").value;
 
       try {
         const response = await fetch("/api/submit", {
           method: "POST",
           headers: {
+            "Content-Type": "application/json"
           },
-          body: JSON.stringify({ Fname, mail, message }), 
+          body: JSON.stringify({ name, email, message }),
         });
 
-        const result = await response.text();
+        const result = await response.json();
 
         if (result.success) {
           statusBox.className = "success";
-          statusBox.textContent = `Submitted Successfully!`;
+          statusBox.style.display = "block";
+          statusBox.textContent = "Submitted successfully!";
         } else {
           statusBox.className = "error";
+          statusBox.style.display = "block";
           statusBox.textContent = `Server error: ${result.error}`;
         }
       } catch (err) {
         statusBox.className = "error";
+        statusBox.style.display = "block";
         statusBox.textContent = `Request failed: ${err.message}`;
       }
     });
 
+    // ✅ FIXED LOAD SUBMISSIONS
     async function loadSubmissions() {
       try {
         const response = await fetch("/api/submissions");
-        const result   = await response.json();
+        const result = await response.json();
 
-        if (result.data.length === 0) {
+        if (!result.data || result.data.length === 0) {
           entries.innerHTML = "<p style='color:#888;'>No submissions yet</p>";
           return;
         }
+
         entries.innerHTML = result.data
           .map(
             (item) => `
               <div class="entry">
-                <strong>${item.FName}</strong> — ${item.contact}<br/>   
+                <strong>${item.name}</strong> — ${item.email}<br/>
                 <em>${item.message}</em><br/>
               </div>`
           )
